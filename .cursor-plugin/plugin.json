@@ -1,0 +1,25 @@
+{
+  "name": "rubixkube",
+  "version": "1.0.0",
+  "description": "RubixKube Site Reliability Intelligence for modern infrastructure: investigate incidents, review evidence-backed RCAs, and track remediation across Kubernetes, AWS, GCP, Linux VMs, and hybrid platforms.",
+  "author": {
+    "name": "RubixKube"
+  },
+  "homepage": "https://rubixkube.ai",
+  "repository": "https://github.com/rubixkube-io/rubixkube-for-ai",
+  "license": "MIT",
+  "keywords": [
+    "rubixkube",
+    "site-reliability-intelligence",
+    "sre",
+    "incident-response",
+    "root-cause-analysis",
+    "rca",
+    "observability",
+    "kubernetes",
+    "aws",
+    "gcp",
+    "platform-engineering"
+  ],
+  "logo": "assets/logo.svg"
+}
