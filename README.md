@@ -79,7 +79,7 @@ claude mcp add --transport http rubixkube https://mcp.rubixkube.ai/mcp
 ### From source
 
 ```bash
-git clone https://github.com/rubixkube/rubixkube-for-ai.git
+git clone https://github.com/rubixkube-io/rubixkube-for-ai.git
 
 # Cursor
 ln -s "$(pwd)/rubixkube-for-ai" ~/.cursor/plugins/local/rubixkube
@@ -140,7 +140,7 @@ When installed as a plugin, these skills guide your AI assistant on when and how
 - **Console**: [console.rubixkube.ai](https://console.rubixkube.ai)
 - **Docs**: [docs.rubixkube.ai](https://docs.rubixkube.ai)
 - **Website**: [rubixkube.ai](https://rubixkube.ai)
-- **Issues**: [github.com/rubixkube/rubixkube-for-ai/issues](https://github.com/rubixkube/rubixkube-for-ai/issues)
+- **Issues**: [github.com/rubixkube-io/rubixkube-for-ai/issues](https://github.com/rubixkube-io/rubixkube-for-ai/issues)
 
 ---
 

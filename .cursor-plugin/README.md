@@ -55,7 +55,7 @@ Add to `.cursor/mcp.json` in your project or user config:
 ### From source
 
 ```bash
-git clone https://github.com/rubixkube/rubixkube-for-ai.git
+git clone https://github.com/rubixkube-io/rubixkube-for-ai.git
 ln -s "$(pwd)/rubixkube-for-ai" ~/.cursor/plugins/local/rubixkube
 ```
 
@@ -111,7 +111,7 @@ Skills guide Cursor's AI on when and how to use each tool automatically. Invoke 
 - **Console**: [console.rubixkube.ai](https://console.rubixkube.ai)
 - **Docs**: [docs.rubixkube.ai](https://docs.rubixkube.ai)
 - **Website**: [rubixkube.ai](https://rubixkube.ai)
-- **Issues**: [github.com/rubixkube/rubixkube-for-ai/issues](https://github.com/rubixkube/rubixkube-for-ai/issues)
+- **Issues**: [github.com/rubixkube-io/rubixkube-for-ai/issues](https://github.com/rubixkube-io/rubixkube-for-ai/issues)
 
 ---
 

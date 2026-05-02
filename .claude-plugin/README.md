@@ -53,7 +53,7 @@ claude mcp add --transport http rubixkube https://mcp.rubixkube.ai/mcp
 ### From source
 
 ```bash
-git clone https://github.com/rubixkube/rubixkube-for-ai.git
+git clone https://github.com/rubixkube-io/rubixkube-for-ai.git
 /install-plugin file://$(pwd)/rubixkube-for-ai
 ```
 
@@ -107,7 +107,7 @@ Skills guide Claude on when and how to use each tool automatically. Invoke them 
 - **Console**: [console.rubixkube.ai](https://console.rubixkube.ai)
 - **Docs**: [docs.rubixkube.ai](https://docs.rubixkube.ai)
 - **Website**: [rubixkube.ai](https://rubixkube.ai)
-- **Issues**: [github.com/rubixkube/rubixkube-for-ai/issues](https://github.com/rubixkube/rubixkube-for-ai/issues)
+- **Issues**: [github.com/rubixkube-io/rubixkube-for-ai/issues](https://github.com/rubixkube-io/rubixkube-for-ai/issues)
 
 ---
 

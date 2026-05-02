@@ -12,7 +12,7 @@
       "source": "./",
       "description": "Site Reliability Intelligence for modern infrastructure. Includes 6 skills (active-issues, investigate, cluster-health, infra-status, pending-actions, rca-report) and an HTTP MCP server with 7 tools.",
       "category": "monitoring",
-      "homepage": "https://github.com/rubixkube/rubixkube-for-ai"
+      "homepage": "https://github.com/rubixkube-io/rubixkube-for-ai"
     }
   ]
 }
