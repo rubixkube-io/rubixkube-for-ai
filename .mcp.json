@@ -1,0 +1,8 @@
+{
+  "mcpServers": {
+    "rubixkube": {
+      "type": "http",
+      "url": "https://mcp.rubixkube.ai/mcp"
+    }
+  }
+}
