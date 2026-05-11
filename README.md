@@ -8,7 +8,7 @@
   Investigate incidents, review evidence-backed root cause analyses, and track remediation across Kubernetes, AWS, GCP, Linux VMs, and hybrid platforms — without leaving your editor.
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-  [![Cursor](https://img.shields.io/badge/Cursor-Plugin-black?logo=cursor)](https://cursor.com/marketplace)
+  [![Cursor](https://img.shields.io/badge/Cursor-Plugin-black?logo=cursor)](https://cursor.directory/plugins/rubixkube)
   [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-orange?logo=anthropic)](https://code.claude.com)
 
   Works with **Claude Code** and **Cursor**.
@@ -66,7 +66,7 @@ Install via the official marketplace:
 Or add this repo as a marketplace and install from it directly:
 
 ```bash
-/plugin marketplace add rubixkube/rubixkube-for-ai
+/plugin marketplace add rubixkube-io/rubixkube-for-ai
 /plugin install rubixkube@rubixkube
 ```
 
