@@ -92,6 +92,8 @@ Reads:
 | `list_comments` | The comment thread on an incident, Task or RCA |
 | `similar_incidents` | Earlier incidents on the same fingerprint or resource, from the knowledge graph |
 | `what_changed` | Deploys, config and scaling changes in the minutes before an incident |
+| `search_knowledge` | Find a service, host, person or resource in the knowledge graph, with its incidents, RCAs and changes |
+| `ask_knowledge` | A plain-words question answered from the organization's recorded history |
 
 Changes, recorded under your name:
 
@@ -117,10 +119,11 @@ Prompts (slash commands in your tool): `what_needs_attention`, `investigate_inci
 
 ## Skills and agent
 
-Installed as a plugin, seven skills tell your assistant when and how to use the tools:
-`status`, `incidents`, `investigate`, `environments`, `tasks`, `rca`, `changes`. Claude Code
-also gets `rubixkube-investigator`, a read-only agent that walks one incident (incident,
-RCA, evidence, comments, snapshot) and reports back without changing anything.
+Installed as a plugin, eight skills tell your assistant when and how to use the tools:
+`status`, `incidents`, `investigate`, `environments`, `tasks`, `rca`, `changes`, `knowledge`.
+Claude Code also gets `rubixkube-investigator`, a read-only agent that walks one incident
+(incident, changes before it, similar incidents, RCA, evidence, comments, snapshot) and
+reports back without changing anything.
 
 ---
 

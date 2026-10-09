@@ -4,6 +4,15 @@ All notable changes to the RubixKube plugin are documented here. The format is b
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.2.0] - 2026-10-10
+
+### Added
+
+- `search_knowledge`: find a service, host, person or resource in the knowledge graph, with
+  what it connects to (incidents, RCAs, changes).
+- `ask_knowledge`: a plain-words question answered from the organization's recorded history.
+- A `knowledge` skill that says when to use them, and the investigator agent uses them.
+
 ## [2.1.0] - 2026-10-10
 
 Answers are written for the model that reads them, not copied from the API.
