@@ -1,23 +1,46 @@
 # Changelog
 
-All notable changes to the RubixKube AI plugin are documented here. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+All notable changes to the RubixKube plugin are documented here. The format is based on
+[Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
+[Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [1.0.0] - 2026-05-03
+## [2.0.0] - 2026-10-10
 
-Initial release for the Cursor and Claude Code marketplaces.
+The plugin now matches the RubixKube console: the same words (Incident, RCA, Task,
+Environment) and the same changes a person can make there.
 
 ### Added
 
-- 6 skills covering the core SRI workflows:
-  - `infra-status` — platform overview and recent activity timeline
-  - `active-issues` — prioritized list of open issues by severity
-  - `investigate` — deep root-cause investigation with linked actions
-  - `cluster-health` — full health view of a connected environment
-  - `pending-actions` — open remediation tasks grouped by priority
-  - `rca-report` — full evidence-backed root cause analysis report
-- Hosted MCP server at `https://mcp.rubixkube.ai/mcp` exposing 7 tools:
-  - `platform_status`, `active_issues`, `investigate`, `cluster_health`,
-    `pending_actions`, `rca_details`, `recent_activity`
-- Auth0-backed login flow shared with `console.rubixkube.ai`
-- Self-hosting instructions and source under `server/`
-- Kubernetes deployment manifests under `deployments/`
+- Writes, all recorded under the signed-in person's name: `report_incident`,
+  `edit_incident`, `close_incident`, `answer_incident_resolution`, `retry_rca`,
+  `create_task`, `update_task`, `move_task`, `assign_task`, `post_comment`.
+- Reads: `list_environments`, `environment_snapshot`, `list_incidents`, `get_incident`,
+  `get_incident_resolution`, `list_rcas`, `get_rca`, `list_tasks`, `get_task`,
+  `list_comments`, `platform_status`.
+- Prompts (slash commands in Claude Code, Cursor and VS Code): `what_needs_attention`,
+  `investigate_incident`, `turn_rca_into_tasks`, `morning_summary`.
+- Resources you can attach as context: `rubixkube://environments`,
+  `rubixkube://incidents/open`, `rubixkube://incidents/{id}`, `rubixkube://rcas/{id}`,
+  `rubixkube://tasks/open`.
+- A read-only `rubixkube-investigator` agent for Claude Code.
+- Sign-in stays signed in: the server refreshes your session in the background instead of
+  asking you to sign in again every day.
+
+### Changed
+
+- Skills renamed and rewritten: `status`, `incidents`, `investigate`, `environments`,
+  `tasks`, `rca`, `changes` replace `infra-status`, `active-issues`, `investigate`,
+  `cluster-health`, `pending-actions`, `rca-report`.
+- Tools renamed: `active_issues` is `list_incidents`, `cluster_health` is
+  `environment_snapshot` plus `list_environments`, `pending_actions` is `list_tasks`,
+  `rca_details` is `get_rca`, `investigate` is `get_incident` plus `get_rca`,
+  `recent_activity` is covered by `platform_status` and `list_rcas`.
+
+### Removed
+
+- The server code is no longer in this repository. The plugin only needs the URL.
+
+## [1.0.0] - 2026-05-03
+
+Initial release for the Cursor and Claude Code marketplaces: six skills and a hosted MCP
+server with seven read-only tools.

@@ -3,46 +3,54 @@
 
   # RubixKube for AI
 
-  **Site Reliability Intelligence in your IDE and terminal.**
+  **RubixKube from the AI tools you already use.**
 
-  Investigate incidents, review evidence-backed root cause analyses, and track remediation across Kubernetes, AWS, GCP, Linux VMs, and hybrid platforms — without leaving your editor.
+  Read what broke, the root cause and the fix. Report or close incidents, run an RCA again,
+  create and assign Tasks. Everything is recorded under your name, the same as in the console.
 
   [![License: MIT](https://img.shields.io/badge/License-MIT-green.svg)](LICENSE)
-  [![Cursor](https://img.shields.io/badge/Cursor-Plugin-black?logo=cursor)](https://cursor.directory/plugins/rubixkube)
-  [![Claude Code](https://img.shields.io/badge/Claude%20Code-Plugin-orange?logo=anthropic)](https://code.claude.com)
 
-  Works with **Claude Code** and **Cursor**.
+  Works with **Claude Code**, **Cursor**, **VS Code** and **Claude**.
 </div>
 
 ---
 
-## What you can do
-
-Ask questions in plain English and your assistant will pull live signal from your RubixKube tenant.
+## What you can ask
 
 ```
-What's going on in prod right now?
-Any critical alerts in the last 2 hours?
-Why is the payment service crashing?
-Show me the RCA for INSIGHT-abc123
-What should I work on first?
+What needs attention?
+Why is checkout crashing?
+Show me the RCA for this incident
+Report an incident: the payments DB failed over at 03:10
+Turn this RCA into Tasks and assign the fix to Sam
+Add a comment: we found the OOM in the worker at 03:12
 ```
 
-Behind the scenes, the plugin loads **6 skills** that route those questions to **7 MCP tools** backed by your live cluster, cloud, and VM data.
+RubixKube watches your infrastructure through observers, turns what breaks into
+**Incidents**, investigates each one into an **RCA** and proposes **Tasks** (a Fix and
+Follow-ups). The plugin gives your AI tool the same reads and changes the console has.
 
 ---
 
 ## Install
 
+### Claude Code
+
+```bash
+/plugin marketplace add rubixkube-io/rubixkube-for-ai
+/plugin install rubixkube@rubixkube
+```
+
+Or only the MCP server, without the skills and the agent:
+
+```bash
+claude mcp add --transport http rubixkube https://mcp.rubixkube.ai/mcp
+```
+
 ### Cursor
 
-Install from the marketplace:
-
-1. Open **Settings → Plugins → Browse Marketplace**
-2. Search for **RubixKube**
-3. Click **Install**
-
-Or add the MCP directly via `.cursor/mcp.json`:
+Settings, Plugins, Browse Marketplace, search **RubixKube**, Install. Or add the MCP server
+to `.cursor/mcp.json`:
 
 ```json
 {
@@ -55,71 +63,65 @@ Or add the MCP directly via `.cursor/mcp.json`:
 }
 ```
 
-### Claude Code
+### VS Code, Claude and any other MCP client
 
-Install via the official marketplace:
+Point it at `https://mcp.rubixkube.ai/mcp` (HTTP transport). The RubixKube console's Apps
+page has one-click links for Cursor, VS Code and Claude.
 
-```bash
-/plugin install rubixkube
-```
+### Sign-in
 
-Or add this repo as a marketplace and install from it directly:
-
-```bash
-/plugin marketplace add rubixkube-io/rubixkube-for-ai
-/plugin install rubixkube@rubixkube
-```
-
-Or add just the MCP server:
-
-```bash
-claude mcp add --transport http rubixkube https://mcp.rubixkube.ai/mcp
-```
-
----
-
-## Authentication
-
-The first time you use a RubixKube tool, your editor opens a browser window to log in with your RubixKube account — the same login as [console.rubixkube.ai](https://console.rubixkube.ai). The session persists after the first sign-in.
+The first time a tool is used, your editor opens a browser window to sign in with your
+RubixKube account, the same as [console.rubixkube.ai](https://console.rubixkube.ai). You stay
+signed in; the server refreshes the session in the background.
 
 ---
 
 ## Tools
 
+Reads:
+
 | Tool | What it answers |
 |---|---|
-| `platform_status` | Overall dashboard — environments, active issues by severity, RCA count, open actions |
-| `active_issues` | Prioritized list of open issues, filterable by environment, namespace, severity |
-| `investigate` | Deep dive — root cause + RCA + linked actions for a specific issue |
-| `cluster_health` | Full view of one connected environment — infra snapshot, workloads, issues, recent RCAs |
-| `pending_actions` | Open remediation tasks, filterable by environment, priority, status |
-| `rca_details` | Complete RCA report — root cause, contributing factors, remediation, rollback, evidence |
-| `recent_activity` | Timeline of recent insights, RCAs, and action updates |
+| `platform_status` | One overview: sources and health, open incidents by severity, Tasks waiting, RCAs from the last day |
+| `list_environments` | The organization's sources (clusters, VMs, cloud accounts, connected tools) and their environment labels |
+| `environment_snapshot` | The latest infrastructure snapshot of one source |
+| `list_incidents`, `get_incident` | Incidents, open by default, with the RCA id when the RCA is done |
+| `get_incident_resolution` | What fixed an incident, or the candidates while it waits for an answer |
+| `list_rcas`, `get_rca` | Root cause analyses, one line each or in full with evidence |
+| `list_tasks`, `get_task` | Tasks (Fixes and Follow-ups) with status, priority, owner and links |
+| `list_comments` | The comment thread on an incident, Task or RCA |
+
+Changes, recorded under your name:
+
+| Tool | What it does |
+|---|---|
+| `report_incident` | Report an incident; the RCA runs in the background, fetch it a few minutes later |
+| `edit_incident`, `close_incident` | Correct or close an incident |
+| `answer_incident_resolution` | Say what fixed a resolved incident |
+| `retry_rca` | Run the RCA again |
+| `create_task`, `update_task`, `move_task`, `assign_task` | Create, rename, move and assign Tasks |
+| `post_comment` | Comment on an incident, Task or RCA |
+
+Prompts (slash commands in your tool): `what_needs_attention`, `investigate_incident`,
+`turn_rca_into_tasks`, `morning_summary`. Resources you can attach as context:
+`rubixkube://environments`, `rubixkube://incidents/open`, `rubixkube://incidents/{id}`,
+`rubixkube://rcas/{id}`, `rubixkube://tasks/open`.
 
 ---
 
-## Skills
+## Skills and agent
 
-When installed as a plugin, these skills guide your AI assistant on when and how to use each tool:
-
-| Skill | Trigger phrases |
-|---|---|
-| `infra-status` | "What's going on?", "How's prod?", "Post-deploy check", "Recent activity" |
-| `active-issues` | "What's broken?", "Any critical alerts?", "Open issues in project X" |
-| `investigate` | "Why is X broken?", "Investigate this error", "Debug the payment service" |
-| `cluster-health` | "How's prod?", "Check staging", "Status of environment X" |
-| `pending-actions` | "What should I work on?", "Show action items", "What's pending?" |
-| `rca-report` | "Show me the RCA", "Root cause analysis for X", "Full investigation report" |
+Installed as a plugin, seven skills tell your assistant when and how to use the tools:
+`status`, `incidents`, `investigate`, `environments`, `tasks`, `rca`, `changes`. Claude Code
+also gets `rubixkube-investigator`, a read-only agent that walks one incident (incident,
+RCA, evidence, comments, snapshot) and reports back without changing anything.
 
 ---
 
 ## Requirements
 
-- A RubixKube account at [console.rubixkube.ai](https://console.rubixkube.ai) (free tier available)
-- Cursor 0.45+ or Claude Code 2.0+
+- A RubixKube account at [console.rubixkube.ai](https://console.rubixkube.ai)
 - Network access to `https://mcp.rubixkube.ai`
-
----
 
 ## Links
 
@@ -128,8 +130,6 @@ When installed as a plugin, these skills guide your AI assistant on when and how
 - **Website**: [rubixkube.ai](https://rubixkube.ai)
 - **Issues**: [github.com/rubixkube-io/rubixkube-for-ai/issues](https://github.com/rubixkube-io/rubixkube-for-ai/issues)
 
----
-
 ## License
 
-MIT — see [LICENSE](LICENSE).
+MIT, see [LICENSE](LICENSE).
