@@ -1,54 +1,33 @@
 ---
 name: investigate
 description: >-
-  Deep investigation of a specific infrastructure issue. Use when the user
-  asks why something is broken, wants to debug a service, pod, cloud resource,
-  VM, or references an insight ID. Returns root cause, RCA findings, and linked
-  remediation actions.
+  Walk one incident end to end: what happened, the RCA and its evidence, what people
+  found, what to do next. Use when the person asks why something is broken, wants the
+  root cause, or says "investigate" or "debug" about a service, pod, VM or incident.
 ---
 
-## When to Use This Skill
+## When to use
 
-Load when the user asks:
-- "Why is [service/pod/cloud resource/VM/namespace] broken?"
-- "Investigate this error / crash / OOM"
-- "What's the root cause of [issue]?"
-- "Look into insight [ID]"
-- "Debug the payment service" / "What's wrong with checkout?"
+- "Why is checkout crashing?" / "Investigate this OOM" / "What's the root cause of INC-…?"
+- "Debug the payment service" (find the incident first with `list_incidents`)
 
-## Tool: `investigate`
+## Steps
 
-Two modes — prefer `insight_id` when you have it:
+1. `get_incident(incident_id)`. If the person named a service rather than an id, call
+   `list_incidents` and pick the matching one; ask if two fit.
+2. If the incident has an `rca_id`: `get_rca(rca_id)`. Read the root cause, contributing
+   factors, impact, remediation and rollback steps, and the evidence behind each finding.
+3. `list_comments(kind="incident", id)` for what the team already found.
+4. If the RCA is missing or thin: `environment_snapshot(environment_id)` for the current
+   state of that source, using the incident's `cluster_id`.
 
-### Mode 1: Direct lookup by ID (preferred)
-Fetches the insight, its RCA report, and all linked remediation actions in a single call.
+## How to answer
 
-```
-investigate(insight_id="<id from active_issues output>")
-```
+In this order: what broke and where; the root cause as the RCA states it, with the evidence
+it cites (quote it, do not paraphrase into certainty); the Tasks already proposed (from the
+RCA or `list_tasks`); what you would do next, in one or two steps.
 
-### Mode 2: Search by text
-Searches insight messages, namespaces, types, and affected resources. Returns matching insights with their IDs.
+If there is no RCA yet, say so. If the RCA failed, offer `retry_rca` (see the `changes`
+skill). Never guess a cause the evidence does not support. Ask before any write.
 
-```
-investigate(search="payment service")
-investigate(search="OOMKilled")
-investigate(search="crashloopbackoff")
-```
-
-Use search when the user describes a symptom without an ID. Once you find the relevant insight, call again with its `insight_id` for full details.
-
-## Reading the Output
-
-The investigation report contains:
-- **Insight** — severity, status, namespace/project, environment, affected resources, first/last seen
-- **Root Cause Analysis** — root cause, contributing factors, impact description, remediation steps, rollback instructions (if RCA exists)
-- **Related Actions** — open remediation tasks linked to this issue, with their `action_id`s
-
-If "Root Cause Analysis: not yet generated" — RCA is still in progress. Check back or look at the insight details for initial signals.
-
-## Chaining
-
-- Found a `report_id` in the output? Use `rca-report` skill for the complete RCA document.
-- See action items you want details on? Use `pending-actions` skill.
-- Want environment-wide context? Use `cluster-health` skill with the `cluster_id` from the insight.
+The server also offers this as the `investigate_incident` prompt.

@@ -1,7 +1,7 @@
 {
   "name": "rubixkube",
-  "version": "1.0.0",
-  "description": "RubixKube Site Reliability Intelligence for modern infrastructure: investigate incidents, review evidence-backed RCAs, and track remediation across Kubernetes, AWS, GCP, Linux VMs, and hybrid platforms.",
+  "version": "2.0.0",
+  "description": "RubixKube from your AI tool: incidents, root cause analyses (RCAs) and Tasks across Kubernetes, VMs, AWS, GCP and Azure. Read what broke, report or close incidents, run an RCA again, create and assign Tasks, all recorded under your name.",
   "author": {
     "name": "RubixKube"
   },
@@ -10,7 +10,6 @@
   "license": "MIT",
   "keywords": [
     "rubixkube",
-    "site-reliability-intelligence",
     "sre",
     "incident-response",
     "root-cause-analysis",
@@ -19,6 +18,7 @@
     "kubernetes",
     "aws",
     "gcp",
+    "azure",
     "platform-engineering"
   ],
   "logo": "assets/logo.svg"

@@ -1,7 +1,7 @@
 {
   "$schema": "https://json.schemastore.org/claude-code-plugin-marketplace.json",
   "name": "rubixkube",
-  "description": "RubixKube Site Reliability Intelligence — investigate incidents, review evidence-backed RCAs, and track remediation across Kubernetes, AWS, GCP, Linux VMs, and hybrid platforms.",
+  "description": "RubixKube from your AI tool: incidents, RCAs and Tasks across Kubernetes, VMs and cloud accounts.",
   "owner": {
     "name": "RubixKube",
     "url": "https://rubixkube.ai"
@@ -10,7 +10,7 @@
     {
       "name": "rubixkube",
       "source": "./",
-      "description": "Site Reliability Intelligence for modern infrastructure. Includes 6 skills (active-issues, investigate, cluster-health, infra-status, pending-actions, rca-report) and an HTTP MCP server with 7 tools.",
+      "description": "Seven skills (status, incidents, investigate, environments, tasks, rca, changes), a read-only investigator agent, and the hosted MCP server with 21 tools, 4 prompts and 5 resources.",
       "category": "monitoring",
       "homepage": "https://github.com/rubixkube-io/rubixkube-for-ai"
     }
