@@ -26,8 +26,8 @@ description: >-
 
 ## How to answer
 
-Say what the graph recorded and from when. It starts on 7 Oct 2026 and holds incidents, RCAs,
-Tasks, changes, environments and people, not metrics or logs. For the current state of a
+Say what the graph recorded. It holds incidents, RCAs, Tasks, changes, environments and
+people as they happened, not metrics or logs, and not the state right now. For the current state of a
 source call `environment_snapshot`; for one incident call `get_incident`. If the graph has
 nothing, say so and offer `list_incidents`. Do not add to the graph from here; that is done
 by RubixKube itself as incidents and RCAs happen.
