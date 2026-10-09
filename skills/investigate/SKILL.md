@@ -21,8 +21,10 @@ description: >-
    A change right before the incident is the first suspect.
 4. `similar_incidents(incident_id)`: earlier incidents on the same fingerprint or resource,
    and how they were resolved.
-5. `list_comments(kind="incident", id)` for what the team already found.
-6. If the RCA is missing or thin: `environment_snapshot(environment_id)` for the current
+5. `search_knowledge(<the affected service or resource>)` for its recorded history: past
+   incidents, RCAs and changes. `ask_knowledge` answers a question across all of it.
+6. `list_comments(kind="incident", id)` for what the team already found.
+7. If the RCA is missing or thin: `environment_snapshot(environment_id)` for the current
    state of that source, using the incident's `environment` (a name works).
 
 ## How to answer
