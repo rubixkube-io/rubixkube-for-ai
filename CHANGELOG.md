@@ -4,6 +4,28 @@ All notable changes to the RubixKube plugin are documented here. The format is b
 [Keep a Changelog](https://keepachangelog.com/en/1.1.0/), and versions follow
 [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [2.1.0] - 2026-10-10
+
+Answers are written for the model that reads them, not copied from the API.
+
+### Added
+
+- `similar_incidents`: earlier incidents on the same fingerprint or resource, from the
+  knowledge graph.
+- `what_changed`: deploys, config and scaling changes in the minutes before an incident.
+- `platform_status` opens with one headline sentence and an attention list.
+- Every incident, RCA and Task carries a `next` line naming the tool to call.
+
+### Changed
+
+- Status words are the console's: Cause found, RCA failed, RCA running, Waiting, To do,
+  In progress. Ids come with the `INC-` short form and a console link. Times read as
+  "12 minutes ago". A source's row carries its environment labels and whether it is
+  connected.
+- Incident and RCA pages no longer carry the markdown copy of the report or embeddings.
+- Writes answer with what changed and who did it.
+- An environment can be named by its name as well as its id.
+
 ## [2.0.0] - 2026-10-10
 
 The plugin now matches the RubixKube console: the same words (Incident, RCA, Task,

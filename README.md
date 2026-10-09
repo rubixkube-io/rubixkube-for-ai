@@ -90,6 +90,8 @@ Reads:
 | `list_rcas`, `get_rca` | Root cause analyses, one line each or in full with evidence |
 | `list_tasks`, `get_task` | Tasks (Fixes and Follow-ups) with status, priority, owner and links |
 | `list_comments` | The comment thread on an incident, Task or RCA |
+| `similar_incidents` | Earlier incidents on the same fingerprint or resource, from the knowledge graph |
+| `what_changed` | Deploys, config and scaling changes in the minutes before an incident |
 
 Changes, recorded under your name:
 
@@ -101,6 +103,10 @@ Changes, recorded under your name:
 | `retry_rca` | Run the RCA again |
 | `create_task`, `update_task`, `move_task`, `assign_task` | Create, rename, move and assign Tasks |
 | `post_comment` | Comment on an incident, Task or RCA |
+
+Every answer is written for a model: the console's status words (Cause found, RCA failed,
+Waiting), the `INC-` short id and a console link, times as "12 minutes ago", the source's
+environment labels, and a `next` line on each incident, RCA and Task naming the tool to call.
 
 Prompts (slash commands in your tool): `what_needs_attention`, `investigate_incident`,
 `turn_rca_into_tasks`, `morning_summary`. Resources you can attach as context:
