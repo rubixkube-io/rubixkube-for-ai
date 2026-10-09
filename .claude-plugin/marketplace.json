@@ -10,7 +10,7 @@
     {
       "name": "rubixkube",
       "source": "./",
-      "description": "Seven skills (status, incidents, investigate, environments, tasks, rca, changes), a read-only investigator agent, and the hosted MCP server with 21 tools, 4 prompts and 5 resources.",
+      "description": "Seven skills (status, incidents, investigate, environments, tasks, rca, changes), a read-only investigator agent, and the hosted MCP server with 23 tools, 4 prompts and 5 resources.",
       "category": "monitoring",
       "homepage": "https://github.com/rubixkube-io/rubixkube-for-ai"
     }
