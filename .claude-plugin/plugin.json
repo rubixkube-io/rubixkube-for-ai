@@ -1,6 +1,6 @@
 {
   "name": "rubixkube",
-  "version": "2.2.0",
+  "version": "2.2.1",
   "description": "RubixKube from your AI tool: incidents, root cause analyses (RCAs) and Tasks across Kubernetes, VMs, AWS, GCP and Azure. Read what broke, report or close incidents, run an RCA again, create and assign Tasks, all recorded under your name.",
   "author": {
     "name": "RubixKube"
